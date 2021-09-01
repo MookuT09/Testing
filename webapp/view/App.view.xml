@@ -1,0 +1,79 @@
+<mvc:View 
+	controllerName="validationInputValidation.controller.App" 
+	xmlns:html="http://www.w3.org/1999/xhtml" 
+	xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true" xmlns="sap.m"
+	xmlns:form="sap.ui.layout.form"
+	xmlns:uxap="sap.uxap">
+	<App>
+		<pages>
+			<Page title="{i18n>title}">
+				<content>
+					<form:SimpleForm editable="true">
+								<Label text="Fake Label"/>
+								<Input
+									valueLiveUpdate="true"
+									id="productName"
+									required="true"
+									value="{
+									path: 'ProductID',
+										type: 'sap.ui.model.type.String',
+										constraints: {
+											search: '^HT-[0-9]{4}$'
+										}
+									}"
+									change=".onNameChange"/>
+								<Label text="ItemDescription"/>
+								<TextArea
+									value="{
+									path: 'Note',
+										type: 'sap.ui.model.type.String'
+									}"/>
+								<Label text="ItemQuantityDescription"/>
+								<Input
+								
+									id="productQuantity"
+									required="true"
+									value="{
+										path: 'Quantity',
+										type: 'sap.ui.model.odata.type.Decimal',
+										constraints: {
+											minimum: '1',
+											nullable: false
+										},
+										formatOptions: {
+											source: {}
+										}
+									}">
+								</Input>
+							</form:SimpleForm>
+					
+					
+					
+					
+					
+				</content>
+			
+			<OverflowToolbar>
+				<Button
+					id="messagePopoverButton"
+					icon="sap-icon://message-popup"
+					type="Emphasized"
+				
+					press=".onOpenMessages"/>
+				<ToolbarSpacer/>
+				<Button
+					id="createButton"
+					type="Emphasized"
+				
+					press=".onCreate"/>
+				<Button
+					id="cancelButton"
+				
+					press=".onCancel"/>
+			</OverflowToolbar>
+	
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
